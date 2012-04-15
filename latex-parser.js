@@ -84,6 +84,8 @@ define(function() {
                             content     : "",
                             raw         : this.currentLine + "\n"
                         }
+                    } else if (this.currentLineIsWarning()) {
+                        this.parseWarningLine();
                     } else {
                         this.parseParensForFilenames();
                     }
@@ -113,6 +115,27 @@ define(function() {
 
         this.currentLineIsError = function() {
             return this.currentLine[0] == "!";
+        };
+
+        this.currentLineIsWarning = function() {
+            return !!(this.currentLine.match(/^LaTeX Warning: /));
+        };
+
+        this.parseWarningLine = function() {
+            var warningMatch = this.currentLine.match(/^LaTeX Warning: (.*)$/);
+            if (!warningMatch) return;
+            var warning = warningMatch[1];
+
+            var lineMatch = warning.match(/line ([0-9]+)/);
+            var line = lineMatch ? parseInt(lineMatch[1], 10) : 0;
+
+            this.data.push({
+                line    : line,
+                file    : this.files[this.files.length - 1],
+                level   : "warning",
+                message : warning,
+                raw     : warning
+            });
         };
 
         // Check if we're entering or leaving a new file in this line

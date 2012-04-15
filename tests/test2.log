@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.5.16)  13 APR 2012 21:06
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.5.16)  13 APR 2012 21:52
 entering extended mode
  %&-line parsing enabled.
 **instantons.tex
-(compiles/7add60003a6409fca8d3a6e38b172dcf/instantons.tex
+(compiles/dff0c37d892f346e58fc14975a16bf69/instantons.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
@@ -288,7 +288,7 @@ Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 \l_MT_multwidth_dim=\dimen126
 )
 \c@claim=\count121
-(compiles/7add60003a6409fca8d3a6e38b172dcf/output.aux)
+(compiles/dff0c37d892f346e58fc14975a16bf69/output.aux)
 \openout1 = `output.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
@@ -319,8 +319,8 @@ Package: gettitlestring 2009/12/18 v1.3 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
 LaTeX Info: Redefining \nameref on input line 30.
-(compiles/7add60003a6409fca8d3a6e38b172dcf/output.out) (compiles/7add60003a6409
-fca8d3a6e38b172dcf/output.out)
+(compiles/dff0c37d892f346e58fc14975a16bf69/output.out) (compiles/dff0c37d892f34
+6e58fc14975a16bf69/output.out)
 \@outlinefile=\write3
 \openout3 = `output.out'.
 
@@ -340,7 +340,7 @@ Package caption Info: End \AtBeginDocument code.
 \MPscratchDim=\dimen128
 \MPnumerator=\count127
 \everyMPtoPDFconversion=\toks28
-) (compiles/7add60003a6409fca8d3a6e38b172dcf/output.toc
+) (compiles/dff0c37d892f346e58fc14975a16bf69/output.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
@@ -352,17 +352,17 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 \tf@toc=\write4
 \openout4 = `output.toc'.
 
-(compiles/7add60003a6409fca8d3a6e38b172dcf/sections/introduction.tex) (compiles
-/7add60003a6409fca8d3a6e38b172dcf/sections/instantons.tex [1
+(compiles/dff0c37d892f346e58fc14975a16bf69/sections/introduction.tex) (compiles
+/dff0c37d892f346e58fc14975a16bf69/sections/instantons.tex [1
 
 {/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Try loading font information for U+euf on input line 7.
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
 ) [2] [3] [4] [5] [6] [7])
-(compiles/7add60003a6409fca8d3a6e38b172dcf/sections/moduli_space_approximation.
+(compiles/dff0c37d892f346e58fc14975a16bf69/sections/moduli_space_approximation.
 tex [8] [9] [10] [11] [12])
-(compiles/7add60003a6409fca8d3a6e38b172dcf/sections/dynamics_of_single_instanto
+(compiles/dff0c37d892f346e58fc14975a16bf69/sections/dynamics_of_single_instanto
 n.tex [13] <figures/variation_of_theta_dot.png, id=342, 361.35pt x 228.855pt>
 File: figures/variation_of_theta_dot.png Graphic file (type png)
 <use figures/variation_of_theta_dot.png> <figures/variation_of_rho_dot.png, id=
@@ -374,9 +374,9 @@ Overfull \hbox (13.3333pt too wide) in paragraph at lines 55--61
  []
 
 )
-(compiles/7add60003a6409fca8d3a6e38b172dcf/sections/dynamics_of_two_instantons.
-tex [14 <compiles/7add60003a6409fca8d3a6e38b172dcf/figures/variation_of_theta_d
-ot.png (PNG copy)> <compiles/7add60003a6409fca8d3a6e38b172dcf/figures/variation
+(compiles/dff0c37d892f346e58fc14975a16bf69/sections/dynamics_of_two_instantons.
+tex [14 <compiles/dff0c37d892f346e58fc14975a16bf69/figures/variation_of_theta_d
+ot.png (PNG copy)> <compiles/dff0c37d892f346e58fc14975a16bf69/figures/variation
 _of_rho_dot.png (PNG copy)>] [15] [16] <figures/higgs_field/fig1.png, id=392, 3
 61.35pt x 285.065pt>
 File: figures/higgs_field/fig1.png Graphic file (type png)
@@ -389,11 +389,11 @@ File: figures/higgs_field/fig3.png Graphic file (type png)
 <use figures/higgs_field/fig3.png> [17] <figures/fig4.png, id=414, 320.8788pt x
  198.7425pt>
 File: figures/fig4.png Graphic file (type png)
-<use figures/fig4.png> [18 <compiles/7add60003a6409fca8d3a6e38b172dcf/figures/h
-iggs_field/fig1.png (PNG copy)> <compiles/7add60003a6409fca8d3a6e38b172dcf/figu
-res/higgs_field/fig2.png (PNG copy)> <compiles/7add60003a6409fca8d3a6e38b172dcf
-/figures/higgs_field/fig3.png (PNG copy)> <compiles/7add60003a6409fca8d3a6e38b1
-72dcf/figures/fig4.png>] <figures/attraction_and_repulsion.png, id=429, 769.876
+<use figures/fig4.png> [18 <compiles/dff0c37d892f346e58fc14975a16bf69/figures/h
+iggs_field/fig1.png (PNG copy)> <compiles/dff0c37d892f346e58fc14975a16bf69/figu
+res/higgs_field/fig2.png (PNG copy)> <compiles/dff0c37d892f346e58fc14975a16bf69
+/figures/higgs_field/fig3.png (PNG copy)> <compiles/dff0c37d892f346e58fc14975a1
+6bf69/figures/fig4.png>] <figures/attraction_and_repulsion.png, id=429, 769.876
 25pt x 473.77pt>
 File: figures/attraction_and_repulsion.png Graphic file (type png)
 <use figures/attraction_and_repulsion.png> <figures/scatterings/flower.png, id=
@@ -405,22 +405,22 @@ File: figures/scatterings/circle.png Graphic file (type png)
 <use figures/scatterings/circle.png> <figures/scatterings/right_angle.png, id=4
 33, 361.35pt x 363.3575pt>
 File: figures/scatterings/right_angle.png Graphic file (type png)
-<use figures/scatterings/right_angle.png> [19 <compiles/7add60003a6409fca8d3a6e
-38b172dcf/figures/attraction_and_repulsion.png (PNG copy)>] [20 <compiles/7add6
-0003a6409fca8d3a6e38b172dcf/figures/scatterings/flower.png (PNG copy)> <compile
-s/7add60003a6409fca8d3a6e38b172dcf/figures/scatterings/circle.png (PNG copy)> <
-compiles/7add60003a6409fca8d3a6e38b172dcf/figures/scatterings/right_angle.png (
+<use figures/scatterings/right_angle.png> [19 <compiles/dff0c37d892f346e58fc149
+75a16bf69/figures/attraction_and_repulsion.png (PNG copy)>] [20 <compiles/dff0c
+37d892f346e58fc14975a16bf69/figures/scatterings/flower.png (PNG copy)> <compile
+s/dff0c37d892f346e58fc14975a16bf69/figures/scatterings/circle.png (PNG copy)> <
+compiles/dff0c37d892f346e58fc14975a16bf69/figures/scatterings/right_angle.png (
 PNG copy)>] <figures/angular_momentum_exchange_rho.png, id=456, 361.35pt x 232.
 87pt>
 File: figures/angular_momentum_exchange_rho.png Graphic file (type png)
 <use figures/angular_momentum_exchange_rho.png> <figures/angular_momentum_excha
 nge_L.png, id=457, 361.35pt x 210.7875pt>
 File: figures/angular_momentum_exchange_L.png Graphic file (type png)
-<use figures/angular_momentum_exchange_L.png>) (compiles/7add60003a6409fca8d3a6
-e38b172dcf/output.bbl [21 <compiles/7add60003a6409fca8d3a6e38b172dcf/figures/an
-gular_momentum_exchange_rho.png (PNG copy)> <compiles/7add60003a6409fca8d3a6e38
-b172dcf/figures/angular_momentum_exchange_L.png (PNG copy)>]) (compiles/7add600
-03a6409fca8d3a6e38b172dcf/sections/appendices.tex
+<use figures/angular_momentum_exchange_L.png>) (compiles/dff0c37d892f346e58fc14
+975a16bf69/output.bbl [21 <compiles/dff0c37d892f346e58fc14975a16bf69/figures/an
+gular_momentum_exchange_rho.png (PNG copy)> <compiles/dff0c37d892f346e58fc14975
+a16bf69/figures/angular_momentum_exchange_L.png (PNG copy)>]) (compiles/dff0c37
+d892f346e58fc14975a16bf69/sections/appendices.tex
 ! Undefined control sequence.
 l.29 \T
         \left( Z_{ri} Z_{si} \right) = \tfrac{1}{2} \partial^2 \Tr \left( C_...
@@ -462,11 +462,77 @@ l.30 \end{equaion}
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 [22] [23] [24] [25] [26] [27] [28] [29] [30])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
 [31]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
-(compiles/7add60003a6409fca8d3a6e38b172dcf/output.aux)
+(compiles/dff0c37d892f346e58fc14975a16bf69/output.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
 Package rerunfilecheck Info: File `output.out' has not changed.
 (rerunfilecheck)             Checksum: 47077DD58F3BF93130F2EA39E2DC1E25;1709.
@@ -498,8 +564,8 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2009/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2009/texmf
 -dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2009/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on compiles/7add60003a6409fca8d3a6e38b172dcf/output.pdf (31 page
-s, 650812 bytes).
+Output written on compiles/dff0c37d892f346e58fc14975a16bf69/output.pdf (31 page
+s, 650810 bytes).
 PDF statistics:
  801 PDF objects out of 1000 (max. 8388607)
  360 named destinations out of 1000 (max. 500000)
