@@ -1,9 +1,18 @@
 define([
   "../lib/latex-parser",
   "text!logs/errors.log",
+  "text!logs/warnings.log",
   "text!logs/bad-boxes.log"
 ],
-function(LatexParser, errorLog, badBoxesLog) {
+function(LatexParser, errorLog, warningLog, badBoxesLog) {
+
+function prettyFileList(files, depth) {
+    depth = depth || "  ";
+    for (var i = 0; i < files.length; i++) {
+      console.log(depth + files[i].path);
+      prettyFileList(files[i].files, depth + "  ");
+    }
+}
 
 module("Errors");
 
@@ -51,6 +60,38 @@ test("Badbox parsing", function() {
     }
   }
 });
+
+module("Warnings");
+
+test("Warning parsing", function() {
+  var errors = LatexParser.parse(warningLog).warnings;
+
+  expectedErrors = [
+    [7, "Citation `Lambert:2010iw' on page 1 undefined on input line 7.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/introduction.tex"] + "",
+    [7, "Citation `Lambert:2010iw' on page 1 undefined on input line 7.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/introduction.tex"] + "",
+    [72, "Citation `Manton:2004tk' on page 3 undefined on input line 72.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/instantons.tex"] + "",
+    [108, "Citation `Atiyah1978' on page 4 undefined on input line 108.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/instantons.tex"] + "",
+    [176, "Citation `Dorey:1996hu' on page 5 undefined on input line 176.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/instantons.tex"] + "",
+    [3, "Citation `Manton1982' on page 8 undefined on input line 3.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/moduli_space_approximation.tex"] + "",
+    [21, "Citation `Weinberg:2006rq' on page 9 undefined on input line 21.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/moduli_space_approximation.tex"] + "",
+    [192, "Citation `Bak:1999sv' on page 12 undefined on input line 192.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/moduli_space_approximation.tex"] + "",
+    [9, "Citation `Peeters:2001np' on page 13 undefined on input line 9.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/dynamics_of_single_instanton.tex"] + "",
+    [27, "Citation `Osborn:1981yf' on page 15 undefined on input line 27.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/dynamics_of_two_instantons.tex"] + "",
+    [27, "Citation `Peeters:2001np' on page 15 undefined on input line 27.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/dynamics_of_two_instantons.tex"] + "",
+    [20, "Citation `Osborn:1981yf' on page 22 undefined on input line 20.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + "",
+    [103, "Citation `Osborn:1981yf' on page 23 undefined on input line 103.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + "",
+    [103, "Citation `Peeters:2001np' on page 23 undefined on input line 103.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + "",
+    [352, "Citation `Peeters:2001np' on page 27 undefined on input line 352.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + ""
+  ]
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    }
+  }
+});
+
 
 module("General");
 
