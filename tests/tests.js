@@ -2,9 +2,10 @@ define([
   "../lib/latex-log-parser",
   "text!logs/errors.log",
   "text!logs/warnings.log",
-  "text!logs/bad-boxes.log"
+  "text!logs/bad-boxes.log",
+  "text!logs/bad-documentclass.log"
 ],
-function(LatexParser, errorLog, warningLog, badBoxesLog) {
+function(LatexParser, errorLog, warningLog, badBoxesLog, badDocumentClassLog) {
 
 function prettyFileList(files, depth) {
     depth = depth || "  ";
@@ -92,6 +93,24 @@ test("Warning parsing", function() {
   }
 });
 
+module("Missing Document Class");
+
+test("Parse Errors", function() {
+  var errors = LatexParser.parse(badDocumentClassLog).errors;
+
+  expectedErrors = [
+    [2, "LaTeX Error: File `aricle.cls' not found."] + "",
+    [null, " ==> Fatal error occurred, no output PDF file produced!"] + ""
+  ];
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    console.log([errors[i].line, errors[i].message]);
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    }
+  }
+});
 
 module("General");
 
