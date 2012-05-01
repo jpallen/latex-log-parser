@@ -1,5 +1,5 @@
 define([
-  "../lib/latex-parser",
+  "../lib/latex-log-parser",
   "text!logs/errors.log",
   "text!logs/warnings.log",
   "text!logs/bad-boxes.log"
