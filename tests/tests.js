@@ -3,9 +3,10 @@ define([
   "text!logs/errors.log",
   "text!logs/warnings.log",
   "text!logs/bad-boxes.log",
-  "text!logs/bad-documentclass.log"
+  "text!logs/biber-warnings.log",
+  "text!logs/natbib-warnings.log"
 ],
-function(LatexParser, errorLog, warningLog, badBoxesLog, badDocumentClassLog) {
+function(LatexParser, errorLog, warningLog, badBoxesLog, biberWarningsLog, natbibWarningsLog) {
 
 function prettyFileList(files, depth) {
     depth = depth || "  ";
@@ -22,7 +23,7 @@ test("Error parsing", function() {
     ignoreDuplicates : true
   }).errors;
 
-  expectedErrors = [
+  var expectedErrors = [
     [29, "Undefined control sequence."] + "",
     [30, "LaTeX Error: \\begin{equation} on input line 28 ended by \\end{equaion}."] + "",
     [30, "Missing $ inserted."] + "",
@@ -45,14 +46,14 @@ module("Bad boxes");
 test("Badbox parsing", function() {
   var errors = LatexParser.parse(badBoxesLog).typesetting;
 
-  expectedErrors = [
+  var expectedErrors = [
     [9, "Overfull \\hbox (29.11179pt too wide) in paragraph at lines 9--10"] + "",
     [11, "Underfull \\hbox (badness 10000) in paragraph at lines 11--13"] + "",
     [27, "Overfull \\vbox (12.00034pt too high) detected at line 27"] + "",
     [46, "Underfull \\vbox (badness 10000) detected at line 46"] + "",
     [54, "Underfull \\hbox (badness 10000) in paragraph at lines 54--55"] + "",
     [58, "Underfull \\hbox (badness 10000) in paragraph at lines 58--60"] + ""
-  ]
+  ];
 
   expect(expectedErrors.length);
   for (var i = 0; i < errors.length; i++) {
@@ -67,7 +68,7 @@ module("Warnings");
 test("Warning parsing", function() {
   var errors = LatexParser.parse(warningLog).warnings;
 
-  expectedErrors = [
+  var expectedErrors = [
     [7, "Citation `Lambert:2010iw' on page 1 undefined on input line 7.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/introduction.tex"] + "",
     [7, "Citation `Lambert:2010iw' on page 1 undefined on input line 7.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/introduction.tex"] + "",
     [72, "Citation `Manton:2004tk' on page 3 undefined on input line 72.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/instantons.tex"] + "",
@@ -83,7 +84,7 @@ test("Warning parsing", function() {
     [103, "Citation `Osborn:1981yf' on page 23 undefined on input line 103.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + "",
     [103, "Citation `Peeters:2001np' on page 23 undefined on input line 103.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + "",
     [352, "Citation `Peeters:2001np' on page 27 undefined on input line 352.", "compiles/d1585ce575dea4cab55f784a22a88652/sections/appendices.tex"] + ""
-  ]
+  ];
 
   expect(expectedErrors.length);
   for (var i = 0; i < errors.length; i++) {
@@ -93,21 +94,44 @@ test("Warning parsing", function() {
   }
 });
 
-module("Missing Document Class");
+module("Biber Warnings");
 
-test("Parse Errors", function() {
-  var errors = LatexParser.parse(badDocumentClassLog).errors;
+test("Biber Warning parsing", function() {
+  var errors = LatexParser.parse(biberWarningsLog).warnings;
 
-  expectedErrors = [
-    [2, "LaTeX Error: File `aricle.cls' not found."] + "",
-    [null, " ==> Fatal error occurred, no output PDF file produced!"] + ""
+    var expectedErrors = [
+    [null, 'No "backend" specified, using Biber backend. To use BibTeX, load biblatex with the "backend=bibtex" option.', "/usr/local/texlive/2013/texmf-dist/tex/latex/biblatex/biblatex.sty"] + "",
+    [null, "The following entry could not be found in the database: Missing3 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "The following entry could not be found in the database: Missing2 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "The following entry could not be found in the database: Missing1 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + ""
   ];
 
   expect(expectedErrors.length);
   for (var i = 0; i < errors.length; i++) {
-    console.log([errors[i].line, errors[i].message]);
-    if (expectedErrors.indexOf([errors[i].line, errors[i].message] + "") > -1) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
       ok(true, "Found error: " + errors[i].message);
+    } else {
+      ok(false, "Unexpected error found: " + errors[i].message);
+    }
+  }
+});
+
+module("Natbib Warnings");
+
+test("Natbib Warning parsing", function() {
+  var errors = LatexParser.parse(natbibWarningsLog).warnings;
+
+    var expectedErrors = [
+    [6, "Citation `blah' on page 1 undefined on input line 6.", "/compile/main.tex"] + "",
+    [null, "There were undefined citations.", "/compile/main.tex"] + ""
+  ];
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    } else {
+      ok(false, "Unexpected error found: " + errors[i].message);
     }
   }
 });
@@ -129,7 +153,7 @@ test("File paths", function() {
       equal(errors[i].file, "compiles/dff0c37d892f346e58fc14975a16bf69/sections/appendices.tex", "File path correct")
   }
 
-  var errors = LatexParser.parse(badBoxesLog).all;
+  errors = LatexParser.parse(badBoxesLog).all;
   for (var i = 0; i < errors.length; i++) {
       equal(errors[i].file, "compiles/b6cf470376785e64ad84c57e3296c912/logs/bad-boxes.tex", "File path correct")
   }
