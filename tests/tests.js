@@ -3,9 +3,10 @@ define([
   "text!logs/errors.log",
   "text!logs/warnings.log",
   "text!logs/bad-boxes.log",
-  "text!logs/biber-warnings.log"
+  "text!logs/biber-warnings.log",
+  "text!logs/natbib-warnings.log"
 ],
-function(LatexParser, errorLog, warningLog, badBoxesLog, biberWarningsLog) {
+function(LatexParser, errorLog, warningLog, badBoxesLog, biberWarningsLog, natbibWarningsLog) {
 
 function prettyFileList(files, depth) {
     depth = depth || "  ";
@@ -103,6 +104,26 @@ test("Biber Warning parsing", function() {
     [null, "The following entry could not be found in the database: Missing3 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
     [null, "The following entry could not be found in the database: Missing2 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
     [null, "The following entry could not be found in the database: Missing1 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + ""
+  ];
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    } else {
+      ok(false, "Unexpected error found: " + errors[i].message);
+    }
+  }
+});
+
+module("Natbib Warnings");
+
+test("Natbib Warning parsing", function() {
+  var errors = LatexParser.parse(natbibWarningsLog).warnings;
+
+    var expectedErrors = [
+    [6, "Citation `blah' on page 1 undefined on input line 6.", "/compile/main.tex"] + "",
+    [null, "There were undefined citations.", "/compile/main.tex"] + ""
   ];
 
   expect(expectedErrors.length);
