@@ -100,9 +100,9 @@ test("Biber Warning parsing", function() {
 
     var expectedErrors = [
     [null, 'No "backend" specified, using Biber backend. To use BibTeX, load biblatex with the "backend=bibtex" option.', "/usr/local/texlive/2013/texmf-dist/tex/latex/biblatex/biblatex.sty"] + "",
-    [null, "Citation 'Missing3' undefined.", "/compile/output.bbl"] + "",
-    [null, "Citation 'Missing2' undefined.", "/compile/output.bbl"] + "",
-    [null, "Citation 'Missing1' undefined.", "/compile/output.bbl"] + ""
+    [null, "The following entry could not be found in the database: Missing3 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "The following entry could not be found in the database: Missing2 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "The following entry could not be found in the database: Missing1 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + ""
   ];
 
   expect(expectedErrors.length);
