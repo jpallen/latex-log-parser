@@ -4,9 +4,11 @@ define([
   "text!logs/warnings.log",
   "text!logs/bad-boxes.log",
   "text!logs/biber-warnings.log",
-  "text!logs/natbib-warnings.log"
+  "text!logs/natbib-warnings.log",
+  "text!logs/geometry-warnings.log",
+  "text!logs/caption-warnings.log"
 ],
-function(LatexParser, errorLog, warningLog, badBoxesLog, biberWarningsLog, natbibWarningsLog) {
+function(LatexParser, errorLog, warningLog, badBoxesLog, biberWarningsLog, natbibWarningsLog, geometryWarningsLog, captionWarningsLog) {
 
 function prettyFileList(files, depth) {
     depth = depth || "  ";
@@ -100,10 +102,10 @@ test("Biber Warning parsing", function() {
   var errors = LatexParser.parse(biberWarningsLog).warnings;
 
     var expectedErrors = [
-    [null, 'No "backend" specified, using Biber backend. To use BibTeX, load biblatex with the "backend=bibtex" option.', "/usr/local/texlive/2013/texmf-dist/tex/latex/biblatex/biblatex.sty"] + "",
-    [null, "The following entry could not be found in the database: Missing3 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
-    [null, "The following entry could not be found in the database: Missing2 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
-    [null, "The following entry could not be found in the database: Missing1 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + ""
+    [null, 'Package biblatex Warning: No "backend" specified, using Biber backend. To use BibTeX, load biblatex with the "backend=bibtex" option.', "/usr/local/texlive/2013/texmf-dist/tex/latex/biblatex/biblatex.sty"] + "",
+    [null, "Package biblatex Warning: The following entry could not be found in the database: Missing3 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "Package biblatex Warning: The following entry could not be found in the database: Missing2 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + "",
+    [null, "Package biblatex Warning: The following entry could not be found in the database: Missing1 Please verify the spelling and rerun LaTeX afterwards.", "/compile/output.bbl"] + ""
   ];
 
   expect(expectedErrors.length);
@@ -122,8 +124,48 @@ test("Natbib Warning parsing", function() {
   var errors = LatexParser.parse(natbibWarningsLog).warnings;
 
     var expectedErrors = [
-    [6, "Citation `blah' on page 1 undefined on input line 6.", "/compile/main.tex"] + "",
-    [null, "There were undefined citations.", "/compile/main.tex"] + ""
+    [6, "Package natbib Warning: Citation `blah' on page 1 undefined on input line 6.", "/compile/main.tex"] + "",
+    [null, "Package natbib Warning: There were undefined citations.", "/compile/main.tex"] + ""
+  ];
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    } else {
+      ok(false, "Unexpected error found: " + errors[i].message);
+    }
+  }
+});
+
+module("Geometry Warnings");
+
+test("Geometry Warning parsing", function() {
+  var errors = LatexParser.parse(geometryWarningsLog).warnings;
+
+    var expectedErrors = [
+    [null, "Package geometry Warning: Over-specification in `h'-direction. `width' (597.50787pt) is ignored.", "/compile/main.tex"] + "",
+    [null, "Package geometry Warning: Over-specification in `v'-direction. `height' (845.04684pt) is ignored.", "/compile/main.tex"] + ""
+  ];
+
+  expect(expectedErrors.length);
+  for (var i = 0; i < errors.length; i++) {
+    if (expectedErrors.indexOf([errors[i].line, errors[i].message, errors[i].file] + "") > -1) {
+      ok(true, "Found error: " + errors[i].message);
+    } else {
+      ok(false, "Unexpected error found: " + errors[i].message);
+    }
+  }
+});
+
+module("Caption Warnings");
+
+test("Caption Warning parsing", function() {
+  var errors = LatexParser.parse(captionWarningsLog).warnings;
+
+    var expectedErrors = [
+    [null, "Package caption Warning: Unsupported document class (or package) detected, usage of the caption package is not recommended. See the caption package documentation for explanation.", "/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption.sty"] + "",
+    [46, "Package caption Warning: The option `hypcap=true' will be ignored for this particular \\caption on input line 46. See the caption package documentation for explanation.", "/compile/main.tex"] + ""
   ];
 
   expect(expectedErrors.length);
